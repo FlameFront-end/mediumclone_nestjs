@@ -2,7 +2,7 @@ import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { UserEntity } from "./entities/user.entity";
 import { InjectRepository } from "@nestjs/typeorm";
-import { Repository } from "typeorm";
+import { FindOneOptions, Repository } from "typeorm";
 import { sign } from "jsonwebtoken";
 import { UserResponseInterface } from "./types/userResponse.interface";
 import { LoginUserDto } from "./dto/login-user.dto";
@@ -64,6 +64,10 @@ export class UserService {
     delete user.password;
 
     return user;
+  }
+
+  findById(id: number): Promise<UserEntity> {
+    return this.userRepository.findOne({ where: { id } });
   }
 
   generateJwt(user: UserEntity) {
