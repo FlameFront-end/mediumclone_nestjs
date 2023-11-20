@@ -1,11 +1,12 @@
 import { DataSource, DataSourceOptions } from "typeorm";
+import * as process from "process";
 
 export const dataSourceOptions: DataSourceOptions = {
   type: "postgres",
   host: "localhost",
   port: 5432,
   username: "postgres",
-  password: "123",
+  password: "qwerty",
   database: "mediumclone",
   entities: [__dirname + "/**/*.entity{.ts,.js}"],
   migrations: [__dirname + "/migration/**/*{.ts,.js}"],
