@@ -8,10 +8,10 @@ import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { TagModule } from "./tag/tag.module";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { dataSourceOptions } from "./config/db.config";
 import { UserModule } from "./user/user.module";
 import { AuthMiddleware } from "./user/middlewares/auth.middleware";
 import { ArticleModule } from "./article/article.module";
+import { dataSourceOptions } from "./datasource.config";
 
 @Module({
   imports: [
