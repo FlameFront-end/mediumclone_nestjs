@@ -8,13 +8,18 @@ import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { TagModule } from "./tag/tag.module";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { dataSourceOptions } from "./datasource.config";
+import { dataSourceOptions } from "./config/db.config";
 import { UserModule } from "./user/user.module";
 import { AuthMiddleware } from "./user/middlewares/auth.middleware";
-import { ArticleModule } from './article/article.module';
+import { ArticleModule } from "./article/article.module";
 
 @Module({
-  imports: [TypeOrmModule.forRoot(dataSourceOptions), TagModule, UserModule, ArticleModule],
+  imports: [
+    TypeOrmModule.forRoot(dataSourceOptions),
+    TagModule,
+    UserModule,
+    ArticleModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

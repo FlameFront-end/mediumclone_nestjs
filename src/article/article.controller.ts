@@ -7,6 +7,6 @@ export class ArticleController {
 
   @Post()
   async getHello(): Promise<string> {
-    return await this.articleService.create();
+    return await this.articleService.createArticle();
   }
 }
