@@ -2,12 +2,16 @@ import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { UserEntity } from "./entities/user.entity";
 import { InjectRepository } from "@nestjs/typeorm";
-import { FindOneOptions, Repository } from "typeorm";
+import { Repository } from "typeorm";
 import { sign } from "jsonwebtoken";
 import { UserResponseInterface } from "./types/userResponse.interface";
 import { LoginUserDto } from "./dto/login-user.dto";
 import { compare } from "bcrypt";
 import { UpdateUserDto } from "./dto/update-user.dto";
+import { config } from "dotenv";
+import * as process from "process";
+
+config();
 
 @Injectable()
 export class UserService {
@@ -84,7 +88,7 @@ export class UserService {
         username: user.username,
         email: user.email,
       },
-      "hgdfodiugfsdfgpour234",
+      process.env.JWT_SECRET,
     );
   }
   buildUserResponse(user: UserEntity): UserResponseInterface {
